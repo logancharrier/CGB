@@ -32,14 +32,16 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
 	@Bean
-	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http
-		.csrf(csrf -> csrf.disable()) // Désactive CSRF
-		.authorizeHttpRequests(
-				(requests) -> requests.anyRequest().authenticated()
-				)
-		.httpBasic(Customizer.withDefaults());
-		return http.build();
-	}
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+            .csrf(csrf -> csrf.disable()) 
+            .authorizeHttpRequests(
+                (requests) -> requests.anyRequest().authenticated()  
+            )
+            .httpBasic(Customizer.withDefaults()) 
+            .headers().frameOptions().disable(); 
+
+        return http.build();
+    }
 
 }

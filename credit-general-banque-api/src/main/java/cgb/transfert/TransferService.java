@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class TransferService {
@@ -46,5 +47,9 @@ public class TransferService {
 
         return transferRepository.save(transfer);
         }
+    }
+    
+    public List<Account> getAllAccounts() {
+        return accountRepository.findAll();
     }
 }

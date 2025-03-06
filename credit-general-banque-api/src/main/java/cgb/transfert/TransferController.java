@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -39,6 +40,19 @@ public class TransferController {
         }
         
     }  
+    
+    @GetMapping("/accounts")
+    public ResponseEntity<?> getAllAccounts() {
+        try {
+            List<Account> accounts = transferService.getAllAccounts();
+            if (accounts.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Aucun compte bancaire trouvé.");
+            }
+            return ResponseEntity.ok(accounts);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erreur lors de la récupération des comptes.");
+        }
+    }
 
     /*
     @PostMapping
