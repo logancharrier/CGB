@@ -1,8 +1,11 @@
 package cgb.transfert;
 
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import cgb.utils.IbanGenerator;
 import jakarta.annotation.PostConstruct;
 
 @Component
@@ -20,20 +23,15 @@ public class DatabaseInitializer {
     }
 
     public static void insertSampleData(AccountRepository accountRepository) {
-        // Insérer des comptes d'exemple
-        Account account1 = new Account();
-        account1.setAccountNumber("123456789");
-        account1.setSolde(300.00);
-        accountRepository.save(account1);
+        Random random = new Random();
 
-        Account account2 = new Account();
-        account2.setAccountNumber("987654321");
-        account2.setSolde(500.00);
-        accountRepository.save(account2);
+        for (int i = 0; i < 20; i++) {
+            Account account = new Account();
+            account.setAccountNumber(IbanGenerator.generateValidIban()); 
+            account.setSolde(Math.round((random.nextDouble() * 10000) * 100.0) / 100.0); 
+            accountRepository.save(account);
+        }
 
-        Account account3 = new Account();
-        account3.setAccountNumber("456789123");
-        account3.setSolde(2000.00);
-        accountRepository.save(account3);
+        System.out.println("20 comptes avec IBAN valides ont été insérés dans la base.");
     }
 }
