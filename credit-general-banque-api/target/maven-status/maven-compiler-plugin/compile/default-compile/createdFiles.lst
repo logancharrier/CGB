@@ -1,12 +1,3 @@
-cgb\transfert\Transfer.class
 cgb\transfert\DatabaseInitializer.class
-cgb\transfert\AccountRepository.class
 cgb\transfert\TransferRequest.class
-cgb\transfert\TransferController.class
-cgb\transfert\Account.class
-cgb\transfert\TransferRepository.class
-cgb\transfert\TestController.class
-cgb\transfert\TransferService.class
 cgb\transfert\SecurityConfig.class
-cgb\transfert\TransferResponse.class
-cgb\transfert\ServerTransferApp.class

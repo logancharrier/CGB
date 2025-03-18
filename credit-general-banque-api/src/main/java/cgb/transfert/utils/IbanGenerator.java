@@ -1,4 +1,4 @@
-package cgb.utils;
+package cgb.transfert.utils;
 
 import java.math.BigInteger;
 import java.util.Random;

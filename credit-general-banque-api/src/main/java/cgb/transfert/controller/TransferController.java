@@ -1,4 +1,4 @@
-package cgb.transfert;
+package cgb.transfert.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -7,6 +7,10 @@ import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import cgb.transfert.TransferRequest;
+import cgb.transfert.entity.Account;
+import cgb.transfert.entity.Transfer;
+import cgb.transfert.service.TransferService;
 
 import java.time.LocalDate;
 import java.util.List;

@@ -5,7 +5,9 @@ import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import cgb.utils.IbanGenerator;
+import cgb.transfert.entity.Account;
+import cgb.transfert.repository.AccountRepository;
+import cgb.transfert.utils.IbanGenerator;
 import jakarta.annotation.PostConstruct;
 
 @Component

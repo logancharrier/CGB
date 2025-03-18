@@ -3,13 +3,15 @@ package cgb.transfert;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import cgb.utils.CGBIbanValidator;
-import cgb.utils.IbanGenerator;
+import cgb.transfert.exception.ExceptionInvalidIbanFormat;
+import cgb.transfert.exception.ExceptionInvalidUnCheckableIban;
+import cgb.transfert.utils.CGBIbanValidator;
+import cgb.transfert.utils.IbanGenerator;
 
 @SpringBootApplication(scanBasePackages = "cgb.transfert")
 public class ServerTransferApp {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ExceptionInvalidIbanFormat, ExceptionInvalidUnCheckableIban {
 		SpringApplication.run(ServerTransferApp.class, args);    	
 		// TODO Auto-generated method stub	
 		//Tester chargement...
