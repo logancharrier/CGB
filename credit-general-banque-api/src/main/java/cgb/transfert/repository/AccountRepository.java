@@ -7,5 +7,6 @@ import cgb.transfert.entity.Account;
 
 @Repository
 public interface AccountRepository extends JpaRepository<Account, String> {
+	 boolean existsByAccountNumber(String accountNumber);
 }
 

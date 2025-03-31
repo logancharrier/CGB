@@ -2,6 +2,9 @@ package cgb.transfert.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.*;
 
 @Entity
@@ -15,10 +18,21 @@ public class Transfer {
     private Double amount;
     private LocalDate transferDate;
     private String description;
+    
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinColumn(name = "lot_id")
+	@JsonManagedReference
+	private LotTransfer lotTransfer;
 
     // Getters and Setters with lombok
     
-    public Long getId() {
+    public LotTransfer getLotTransfer() {
+		return lotTransfer;
+	}
+	public void setLotTransfer(LotTransfer lotTransfer) {
+		this.lotTransfer = lotTransfer;
+	}
+	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
@@ -54,5 +68,6 @@ public class Transfer {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
 
 }

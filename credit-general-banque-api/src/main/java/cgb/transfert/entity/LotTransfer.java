@@ -5,14 +5,18 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
+@Table(name = "LOT_TRANSFER")
 public class LotTransfer {
     @Id
     private String numeroDeLot;
 	private LocalDateTime dateLancement;
     private String etat;
     
-    @OneToMany(mappedBy = "lotTransfert", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "lotTransfer", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonBackReference
     private List<Transfer> transfers;
 
     public LotTransfer() {
