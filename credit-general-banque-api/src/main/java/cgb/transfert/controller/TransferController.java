@@ -26,24 +26,8 @@ public class TransferController {
 
     
 
-    @PostMapping
-    public ResponseEntity<?> createTransfer(@RequestBody TransferRequest transferRequest) {
-    //public ResponseEntity<Transfer> createTransfer(@RequestBody TransferRequest transferRequest) {
-        try {
-    	Transfer transfer = transferService.createTransfer(
-                transferRequest.getSourceAccountNumber(),
-                transferRequest.getDestinationAccountNumber(),
-                transferRequest.getAmount(),
-                transferRequest.getTransferDate(),
-                transferRequest.getDescription()
-        );
-    	return ResponseEntity.ok(transfer);
-        }catch (RuntimeException e) {
-            TransferResponse errorResponse = new TransferResponse("FAILURE", e.getMessage());
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
-        }
-        
-    }  
+    
+    
     
     @GetMapping("/accounts")
     public ResponseEntity<?> getAllAccounts() {

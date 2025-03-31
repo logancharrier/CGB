@@ -20,5 +20,7 @@ public class LotTransferController {
     public List<LotTransfer> getAllLots() {
         return lotTransferService.getAllLots();
     }
+    
+   
 }
 

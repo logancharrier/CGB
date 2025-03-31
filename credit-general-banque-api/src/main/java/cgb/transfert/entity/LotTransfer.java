@@ -1,9 +1,8 @@
 package cgb.transfert.entity;
 
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
-import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -11,49 +10,57 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 @Table(name = "LOT_TRANSFER")
 public class LotTransfer {
     @Id
-    private String numeroDeLot;
-	private LocalDateTime dateLancement;
-    private String etat;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    @Column(name = "NUM_LOT")
+    private Long numeroDeLot;
     
+    @Column(name = "DATE_LANCEMENT")
+    private LocalDate dateLancement;
+    
+    @Column(name = "MESSAGE")
+    private String message;
+    
+    @Column(name = "ETAT")
+    private String etat;
+
     @OneToMany(mappedBy = "lotTransfer", cascade = CascadeType.ALL, orphanRemoval = true)
-	@JsonBackReference
+    @JsonBackReference
     private List<Transfer> transfers;
 
     public LotTransfer() {
-        this.numeroDeLot = UUID.randomUUID().toString();
-        this.dateLancement = LocalDateTime.now();
-        this.etat = "En cours";
+        this.dateLancement = LocalDate.now();
+        this.etat = "EnCours";
     }
 
-    public String getNumeroDeLot() {
-		return numeroDeLot;
-	}
+    public Long getNumeroDeLot() {
+        return numeroDeLot;
+    }
 
-	public void setNumeroDeLot(String numeroDeLot) {
-		this.numeroDeLot = numeroDeLot;
-	}
+    public void setNumeroDeLot(Long numeroDeLot) {
+        this.numeroDeLot = numeroDeLot;
+    }
 
-	public LocalDateTime getDateLancement() {
-		return dateLancement;
-	}
+    public LocalDate getDateLancement() {
+        return dateLancement;
+    }
 
-	public void setDateLancement(LocalDateTime dateLancement) {
-		this.dateLancement = dateLancement;
-	}
+    public void setDateLancement(LocalDate dateLancement) {
+        this.dateLancement = dateLancement;
+    }
 
-	public String getEtat() {
-		return etat;
-	}
+    public String getEtat() {
+        return etat;
+    }
 
-	public void setEtat(String etat) {
-		this.etat = etat;
-	}
+    public void setEtat(String etat) {
+        this.etat = etat;
+    }
 
-	public List<Transfer> getTransfers() {
-		return transfers;
-	}
+    public List<Transfer> getTransfers() {
+        return transfers;
+    }
 
-	public void setTransfers(List<Transfer> transfers) {
-		this.transfers = transfers;
-	}
+    public void setTransfers(List<Transfer> transfers) {
+        this.transfers = transfers;
+    }
 }
