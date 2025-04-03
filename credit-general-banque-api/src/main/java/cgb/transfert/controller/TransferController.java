@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.*;
 
 import cgb.transfert.TransferRequest;
 import cgb.transfert.entity.Account;
+import cgb.transfert.entity.LotTransfer;
 import cgb.transfert.entity.Transfer;
+import cgb.transfert.service.LotTransferService;
 import cgb.transfert.service.TransferService;
+import ch.qos.logback.core.model.Model;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -22,12 +25,9 @@ public class TransferController {
 
     @Autowired
     private TransferService transferService;
-
-
     
-
-    
-    
+    @Autowired
+    private LotTransferService lotTransferService;
     
     @GetMapping("/accounts")
     public ResponseEntity<?> getAllAccounts() {
@@ -50,6 +50,31 @@ public class TransferController {
     } 
     */
     
+//    @PostMapping("/selectionnerLot")
+//    public String selectionnerLot(@ModelAttribute Transfer transfer, Model model) {
+//        List<LotTransfer> lots = lotTransferService.getAllLots();
+//        TransferAndLotDTO dto = new TransferAndLotDTO();
+//        dto.setTransfer(transfer);
+//        dto.setLots(lots);
+//
+//        model.addAttribute("transferAndLotDTO", dto);
+//        return "formAddTransferToLot";
+//    }
+//    
+//    @PostMapping("/ajouterTransfert")
+//    public String ajouterTransfert(@ModelAttribute TransferAndLotDTO dto) {
+//        Long lotId = dto.getTransferId();  // Récupération de l'ID du lot sélectionné
+//        LotTransfer lotTransfer = lotTransferService.getLotByNumeroDeLot(lotId);
+//        Transfer transfer = dto.getTransfer();
+//        transfer.setLotTransfer(lotTransfer);  // Association du transfert au lot
+//        transferService.enregistrerTransfer(transfer);  // Enregistrement en base
+//
+//        return "confirmationAjout";
+//    }
+//    
+//    public ResponseEntity<Transfer> sendTransferDTO (@RequestBody TransferAndLotDTO pdto) {
+//		return null;
+//	}
 }
 
 

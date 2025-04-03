@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cgb.transfert.entity.Account;
+import cgb.transfert.entity.LotTransfer;
 import cgb.transfert.entity.Transfer;
 import cgb.transfert.repository.AccountRepository;
 import cgb.transfert.repository.TransferRepository;
@@ -20,7 +21,9 @@ public class TransferService {
     @Autowired
     private TransferRepository transferRepository;
 
-    
+    public Transfer enregistrerLot(Transfer transfer) {
+        return transferRepository.save(transfer);
+    }
     
     public List<Account> getAllAccounts() {
         return accountRepository.findAll();
