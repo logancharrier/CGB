@@ -3,11 +3,16 @@ package cgb.transfert.dto;
 import lombok.Data;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import cgb.transfert.entity.Transfer;
 
 @Data
 public class TransferDTO {
 	private Long id;
+	@JsonProperty("destAccount")
+	@JsonAlias("destinationAccount")
 	private String destinationAccount;
 	private Double amount;
 	private String description;

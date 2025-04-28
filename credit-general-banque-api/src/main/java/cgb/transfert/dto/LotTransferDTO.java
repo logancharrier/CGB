@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import cgb.transfert.entity.LotTransfer;
@@ -13,7 +14,8 @@ import cgb.transfert.entity.LotTransfer;
 public class LotTransferDTO {
 	@JsonProperty("id")
 	private Long id;
-	@JsonProperty("ref_lot")
+	@JsonProperty("ref_lot")         
+	@JsonAlias("refLot")            
 	private String refLot;
 	@JsonProperty("sourceAccount")
 	private String sourceAccount;
