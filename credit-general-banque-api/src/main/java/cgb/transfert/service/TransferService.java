@@ -15,17 +15,14 @@ import java.util.List;
 @Service
 public class TransferService {
 
-    @Autowired
-    private AccountRepository accountRepository;
+	@Autowired
+	private TransferRepository transferRepository;
 
-    @Autowired
-    private TransferRepository transferRepository;
+	public Transfer enregistrerLot(Transfer transfer) {
+		return transferRepository.save(transfer);
+	}
 
-    public Transfer enregistrerLot(Transfer transfer) {
-        return transferRepository.save(transfer);
-    }
-    
-    public List<Account> getAllAccounts() {
-        return accountRepository.findAll();
-    }
+	public List<Transfer> getAllTranfers() {
+		return transferRepository.findAll();
+	}
 }

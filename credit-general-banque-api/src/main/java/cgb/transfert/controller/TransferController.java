@@ -26,55 +26,20 @@ public class TransferController {
     @Autowired
     private TransferService transferService;
     
-    @Autowired
-    private LotTransferService lotTransferService;
+    @GetMapping("/all")
+	public ResponseEntity<?> getAllTransfers() {
+		try {
+			List<Transfer> transfers = transferService.getAllTranfers();
+			if (transfers.isEmpty()) {
+				return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Aucun compte bancaire trouvé.");
+			}
+			return ResponseEntity.ok(transfers);
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+					.body("Erreur lors de la récupération des comptes.");
+		}
+	}
     
-    @GetMapping("/accounts")
-    public ResponseEntity<?> getAllAccounts() {
-        try {
-            List<Account> accounts = transferService.getAllAccounts();
-            if (accounts.isEmpty()) {
-                return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Aucun compte bancaire trouvé.");
-            }
-            return ResponseEntity.ok(accounts);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erreur lors de la récupération des comptes.");
-        }
-    }
-
-    /*
-    @PostMapping
-    public ResponseEntity<String> testTransfer(@RequestBody String s) {
-    	System.out.println("Post reçu");
-        return ResponseEntity.ok("Post bien traité: "+ s);
-    } 
-    */
-    
-//    @PostMapping("/selectionnerLot")
-//    public String selectionnerLot(@ModelAttribute Transfer transfer, Model model) {
-//        List<LotTransfer> lots = lotTransferService.getAllLots();
-//        TransferAndLotDTO dto = new TransferAndLotDTO();
-//        dto.setTransfer(transfer);
-//        dto.setLots(lots);
-//
-//        model.addAttribute("transferAndLotDTO", dto);
-//        return "formAddTransferToLot";
-//    }
-//    
-//    @PostMapping("/ajouterTransfert")
-//    public String ajouterTransfert(@ModelAttribute TransferAndLotDTO dto) {
-//        Long lotId = dto.getTransferId();  // Récupération de l'ID du lot sélectionné
-//        LotTransfer lotTransfer = lotTransferService.getLotByNumeroDeLot(lotId);
-//        Transfer transfer = dto.getTransfer();
-//        transfer.setLotTransfer(lotTransfer);  // Association du transfert au lot
-//        transferService.enregistrerTransfer(transfer);  // Enregistrement en base
-//
-//        return "confirmationAjout";
-//    }
-//    
-//    public ResponseEntity<Transfer> sendTransferDTO (@RequestBody TransferAndLotDTO pdto) {
-//		return null;
-//	}
 }
 
 
