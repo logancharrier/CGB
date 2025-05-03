@@ -16,8 +16,6 @@ public class Transfer {
 
     @Column(name = "SOURCE_ACCOUNT", nullable = false)
     private String sourceAccount;
-    
-    
 
 	@Column(name = "AMOUNT", nullable = false)
     private Double amount;
