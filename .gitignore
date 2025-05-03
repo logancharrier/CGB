@@ -1,0 +1,10 @@
+credit-general-banque-api/db_cgb.lock.db
+credit-general-banque-api/db_cgb.mv.db
+credit-general-banque-api/db_cgb.trace.db
+credit-general-banque-api/target/classes/application.properties
+credit-general-banque-api/target/classes/cgb/transfert/DatabaseInitializer.class
+credit-general-banque-api/target/classes/cgb/transfert/SecurityConfig.class
+credit-general-banque-api/target/classes/cgb/transfert/TransferRequest.class
+credit-general-banque-api/target/classes/META-INF/MANIFEST.MF
+credit-general-banque-api/target/classes/META-INF/maven/credit-general-banque/credit-general-banque-api/pom.properties
+credit-general-banque-api/target/classes/META-INF/maven/credit-general-banque/credit-general-banque-api/pom.xml
