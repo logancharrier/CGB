@@ -1,11 +1,9 @@
 package cgb.transfert.exception;
 
-public abstract class ExceptionInvalideIBAN extends Exception {
-
+public class ExceptionLot extends Exception {
 	private static final long serialVersionUID = 1L;
 
-	public ExceptionInvalideIBAN(String message) {
+	public ExceptionLot(String message) {
         super(message);
     }
 }
-
